@@ -1,6 +1,6 @@
 [Project]
-FileName=MarioBro.dev
-Name=MarioBro
+FileName=Spider.dev
+Name=Project1
 Type=1
 Ver=2
 ObjFiles=
@@ -11,7 +11,7 @@ ResourceIncludes=
 MakeIncludes=
 Compiler=
 CppCompiler=
-Linker=-lopengl32_@@_-lfreeglut_@@_-lglu32_@@_
+Linker=
 IsCpp=1
 Icon=
 ExeOutput=
@@ -19,7 +19,7 @@ ObjectOutput=
 LogOutput=
 LogOutputEnabled=0
 OverrideOutput=0
-OverrideOutputName=MarioBro.exe
+OverrideOutputName=
 HostApplication=
 UseCustomMakefile=0
 CustomMakefile=
@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
-UnitCount=4
+UnitCount=6
 
 [VersionInfo]
 Major=1
@@ -51,7 +51,7 @@ AutoIncBuildNr=0
 SyncProduct=1
 
 [Unit1]
-FileName=MarioBro.cpp
+FileName=main.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -61,17 +61,16 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-FileName=Mario.h
-CompileCpp=1
+FileName=mak3.bmp
 Folder=
-Compile=1
-Link=1
+Compile=0
+Link=0
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=RGBApixmap.h
+FileName=pixMap.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -81,11 +80,28 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit4]
-FileName=pixMap.h
-CompileCpp=1
+FileName=spider.bmp
 Folder=
-Compile=1
-Link=1
+Compile=0
+Link=0
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit5]
+FileName=spider1.bmp
+Folder=
+Compile=0
+Link=0
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit6]
+FileName=splash.bmp
+Folder=
+Compile=0
+Link=0
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=

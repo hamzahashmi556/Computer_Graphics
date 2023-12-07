@@ -1,63 +1,94 @@
-#include <GL/glut.h>
+#include <gl/glut.h>
+#include<gl/glu.h> 
+#include<gl/gl.h>
 
-// Function to draw the golden rectangle with a specified color
-void drawGoldenRectangle(float centerX, float centerY, float rectWidth, float rectHeight, float r, float g, float b)
-{
-    glColor3f(r, g, b);
-    glBegin(GL_TRIANGLE_STRIP);
-    glVertex2f(centerX - rectWidth / 2, centerY - rectHeight / 2);
-    glVertex2f(centerX + rectWidth / 2, centerY - rectHeight / 2);
-    glVertex2f(centerX - rectWidth / 2, centerY + rectHeight / 2);
-    glVertex2f(centerX + rectWidth / 2, centerY + rectHeight / 2);
-    glEnd();
+#define RED 1 
+#define GREEN 2
+#define BLUE 3  
+#define WHITE 4 
+float angle = 0.0;// for rotating the triangle 
+float red = 1.0,
+blue = 1.0,
+green = 1.0; // possible triangle colors. 
+void renderScene(void) {
+	// the callback to draw the triangle
+
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glLoadIdentity();
+	glRotatef(angle, 0.0, 1.0, 0.0); // rotate the triangle a little more 
+	glColor3f(red, green, blue);// change its color
+
+	glBegin(GL_TRIANGLES); // draw the triangle 
+	glVertex3f(-0.5, -0.5, 0.0);
+
+	glVertex3f(0.5, 0.0, 0.0);
+	glVertex3f(0.0, 0.5, 0.0);
+
+	glEnd();
+	angle++;
+
+	glutSwapBuffers();
+
 }
 
-// Display callback function
-void display()
-{
-    glClear(GL_COLOR_BUFFER_BIT);
+void processMenuEvents(int option) {
 
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluOrtho2D(-1, 1, -1, 1);
+	//mouse choice chooses color 
+	switch (option) {
 
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
+	case RED:
+		red = 1.0;
+		green = 0.0;
+		blue = 0.0;
+		break;
 
-    // Calculate initial center and size for the golden rectangle
-    float centerX = 0.0f;
-    float centerY = 0.0f;
-    float rectWidth = 0.5f;
-    float rectHeight = 0.5f;
+	case GREEN:
+		red = 0.0;
+		green = 1.0;
+		blue = 0.0;
+		break;
 
-    // Draw the regression of golden rectangles with different colors
-    for (int i = 0; i < 10; ++i)
-    {
-        float r = (i / 10.0f);      // Varies from 0.0 to 1.0
-        float g = (1.0f - r);       // Varies from 1.0 to 0.0
-        float b = (0.5f + r / 2);   // Varies from 0.5 to 1.0
+	case BLUE:
+		red = 0.0;
+		green = 0.0;
+		blue = 1.0;
+		break;
 
-        drawGoldenRectangle(centerX, centerY, rectWidth, rectHeight, r, g, b);
+	case WHITE:
+		red = 1.0;
+		green = 1.0;
+		blue = 1.0;
+		break;
 
-        // Update center and size for the next rectangle
-        centerX *= 0.9f;
-        centerY *= 0.9f;
-        rectWidth *= 0.9f;
-        rectHeight *= 0.9f;
-    }
+		//---------MAIN---
 
-    glFlush();
+	}
 }
 
-int main(int argc, char** argv)
-{
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(600, 400);
-    glutCreateWindow("Golden Rectangles");
+int main(int argc, char** argv) {
 
-    glutDisplayFunc(display);
-    glutMainLoop();
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 
-    return 0;
+	glutInitWindowPosition(100, 100);
+	glutInitWindowSize(320, 320);
+
+	glutCreateWindow("Menu Test"); // open an OpenGL window 
+	glutDisplayFunc(renderScene); // register display function
+
+	glutIdleFunc(renderScene); // calls to functions to create
+
+
+	glutCreateMenu(processMenuEvents);
+
+	glutAddMenuEntry("Red", RED);
+
+	glutAddMenuEntry("Blue", BLUE);
+	glutAddMenuEntry("Green", GREEN);
+
+	glutAddMenuEntry("White", WHITE); glutAttachMenu(GLUT_RIGHT_BUTTON); // attach right mouse button
+
+
+
+	glutMainLoop();
 }

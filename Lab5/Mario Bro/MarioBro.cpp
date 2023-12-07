@@ -70,40 +70,15 @@ public:
 	void stay();
 	void jump();
 	void die();
+	
+	float getX() const {
+        return pos_X;
+    }
+
+    float getY() const {
+        return pos_Y;
+    }
 };
-
-void Mario::render(
-	{
-		switch (mode) {
-		case STAY:
-			glRasterPos2i(this->pos_X, this->pos_Y)
-				pix[0].mDraw();
-			break;
-		case RUN:
-			run();
-			break;
-		case JUMP:
-			//body
-			break;
-		case DEAD:
-			//body
-			break;
-		}
-	});
-
-void Mario::run() {
-	switch (state) {
-	case RUNNING1:
-		state = RUNNING2;
-		break;
-	case RUNNING2:
-		state = RUNNING3;
-		break;
-	case RUNNING3:
-		state = RUNNING1;
-		break;
-	}
-}
 
 
 //void changeMode(modeType m);

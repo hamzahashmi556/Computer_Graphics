@@ -14,7 +14,6 @@ void drawSky() {
 	glVertex2f(14,4); // bottom right
 	glVertex2f(2, 4); // bottom left
 	glEnd();
-	
 }
 
 void drawMountains() {

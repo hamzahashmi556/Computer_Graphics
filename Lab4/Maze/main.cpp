@@ -3,15 +3,11 @@
 #include <vector>
 #include <random>
 #include <ctime>
-#include <cstdlib> // Include the necessary header for rand function
-#include <ctime>   // Include the necessary header for seeding rand function
-#include <ctime>
 #include <stack>
+#include <algorithm>
 
-int startRow, startCol;
-
-const int ROWS = 40;
-const int COLS = 40;
+const int ROWS = 30;
+const int COLS = 30;
 const int CELL_SIZE = 40;
 
 struct Cell {
@@ -37,8 +33,7 @@ void generateMaze() {
         }
     }
 
-	std::srand(static_cast<unsigned>(std::time(nullptr)));
-//    std::stack<std::pair<int, int>> stack;
+    std::stack<std::pair<int, int>> stack;
     startRow = std::rand() % ROWS;
     startCol = std::rand() % COLS;
     stack.push(std::make_pair(startRow, startCol));
