@@ -1,6 +1,6 @@
 [Project]
-FileName=Menu.dev
-Name=Menu
+FileName=MarioBro.dev
+Name=MarioBro
 Type=1
 Ver=2
 ObjFiles=
@@ -11,7 +11,7 @@ ResourceIncludes=
 MakeIncludes=
 Compiler=
 CppCompiler=
-Linker=-lopengl32_@@_-lfreeglut_@@_-lglu32_@@_
+Linker=
 IsCpp=1
 Icon=
 ExeOutput=
@@ -19,7 +19,7 @@ ObjectOutput=
 LogOutput=
 LogOutputEnabled=0
 OverrideOutput=0
-OverrideOutputName=Menu.exe
+OverrideOutputName=
 HostApplication=
 UseCustomMakefile=0
 CustomMakefile=
@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
-UnitCount=1
+UnitCount=5
 
 [VersionInfo]
 Major=1
@@ -39,19 +39,19 @@ Build=0
 LanguageID=1033
 CharsetID=1252
 CompanyName=
-FileVersion=1.0.0.0
+FileVersion=
 FileDescription=Developed using the Dev-C++ IDE
 InternalName=
 LegalCopyright=
 LegalTrademarks=
 OriginalFilename=
 ProductName=
-ProductVersion=1.0.0.0
+ProductVersion=
 AutoIncBuildNr=0
 SyncProduct=1
 
 [Unit1]
-FileName=main.cpp
+FileName=MarioBro.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -59,4 +59,44 @@ Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
+
+[Unit2]
+FileName=Mario.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit3]
+FileName=pixMap.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit4]
+FileName=RGBApixmap.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit5]
+FileName=RGBpixmap.h
+Folder=
+Compile=0
+Link=0
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+CompileCpp=0
 
