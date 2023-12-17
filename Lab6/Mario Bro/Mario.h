@@ -1,0 +1,117 @@
+//#pragma once
+# include "pixmap.h"
+# include "Point.h"
+
+class Mario {
+	
+public:
+
+	RGBApixmap pix[5]; // make six empty pixmaps, one for each side of cube
+
+	enum State { STANDING, RUNNING1, RUNNING2, RUNNING3, JUMPING, DIE } state;
+	enum ModeType { STAY, RUN, R, JUMP, DEAD } mode;
+	float pos_X, pos_Y;
+
+	Mario(Point pos) {
+		pix[0].readBMPFile("MarioStanding.bmp", 1);
+		pix[1].readBMPFile("MarioRun2.bmp", 1);  // read texture for side 1 from image
+		pix[2].readBMPFile("MarioRun1.bmp", 1);
+		pix[3].readBMPFile("MarioRun1.bmp", 1);  // read texture for side 1 from image
+		pix[4].readBMPFile("MarioJump.bmp", 1);
+
+		for (int i = 0; i < 5; i++)
+			pix[i].setChromaKey(192, 192, 192);
+
+		this->pos_X = pos.getX();
+		this->pos_Y = pos.getY();
+
+
+	};
+
+	void changePosition(float dx, float dy)
+	{
+		this->pos_X += dx;  this->pos_Y += dy;
+	}
+
+	void render();
+	void changeMode(ModeType m);
+	void run();
+	void stay();
+	void jump();
+	void die();
+};
+
+void Mario::render()
+{
+	switch (mode)
+	{
+
+	case STAY:
+		glRasterPos2i(this->pos_X, this->pos_Y);
+		pix[0].mDraw();
+		break;
+
+	case RUN:
+		run();
+		break;
+
+	case JUMP:
+		break;
+	}
+
+}
+
+void Mario::run()
+{
+	switch (state)
+	{
+	case RUNNING1:
+
+		state = RUNNING2;
+		break;
+
+	case RUNNING2:
+
+		state = RUNNING3;
+		break;
+
+	case RUNNING3:
+		state = RUNNING1;
+		break;
+
+	}
+	changePosition(0.01, 0);
+	glRasterPos2i(this->pos_X, this->pos_Y);
+	pix[state].mDraw();
+
+}
+
+void Mario::jump() {
+	changePosition(0, 0.5);
+	glRasterPos2i(this->pos_X, this->pos_Y);
+	pix[state].mDraw();
+}
+
+void Mario::changeMode(ModeType m)
+{
+	if (mode == m)
+		return;
+
+	switch (m)
+	{
+	case STAY:
+		state = STANDING;
+		break;
+
+	case RUN:
+		state = RUNNING1;
+		break;
+
+	case JUMP:
+		state = JUMPING;
+		break;
+
+	}
+
+	mode = m;
+}
