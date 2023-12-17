@@ -7,26 +7,37 @@
 
 // Function to initialize OpenGL settings and create a window
 void setupWindow() {
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); // Set the display mode to single buffer and RGB color
-    glutInitWindowSize(640, 480); // Set the initial window size to 640x480 pixels
-    glutInitWindowPosition(800, 200); // Set the initial window position on the screen
-    glutCreateWindow("Simple Window"); // Create a window with the specified title
+	// Set the display mode to single buffer and RGB color
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); 
+    // Set the initial window size to 640x480 pixels
+    glutInitWindowSize(640, 480); 
+    // Set the initial window position on the screen
+    glutInitWindowPosition(800, 200); 
+    // Create a window with the specified title
+    glutCreateWindow("Simple Window"); 
 }
 
 // Function to handle the display
 void display() {
-    glClearColor(1.0, 1.0, 1.0, 0.0); // Set the clear color to white (RGB: 1.0, 1.0, 1.0)
-    glClear(GL_COLOR_BUFFER_BIT); // Clear the color buffer (background)
+	// Set the clear color to white (RGB: 1.0, 1.0, 1.0)
+    glClearColor(1.0, 1.0, 1.0, 0.0); 
+    // Clear the color buffer (background)
+    glClear(GL_COLOR_BUFFER_BIT); 
     // gluOrtho2D(0.0, 100.0, 0, 100.0); // This line is commented out; it's used to set the coordinate system
-    glFlush(); // Flush the rendering pipeline to display the changes
+    // Flush the rendering pipeline to display the changes
+    glFlush(); 
 }
 
 // Main function
 int main(int argc, char **argv) {
-    glutInit(&argc, argv); // Initialize the GLUT library
-    setupWindow(); // Call the setup Window function to configure the window options
-    glutDisplayFunc(display); // Register the display function to be called when the window needs to be redrawn
-    glutMainLoop(); // Enter the GLUT event processing loop
+	// Initialize the GLUT library
+    glutInit(&argc, argv);
+	// Call the setup Window function to configure the window options 
+    setupWindow();
+    // Register the display function to be called when the window needs to be redrawn
+    glutDisplayFunc(display); 
+    // Enter the GLUT event processing loop
+    glutMainLoop();
 
     return 0; // Return 0 to indicate successful execution
 }
