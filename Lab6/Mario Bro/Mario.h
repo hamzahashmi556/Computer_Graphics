@@ -28,10 +28,10 @@ public:
 
 	};
 
-	void changePosition(float dx, float dy)
-	{
-		this->pos_X += dx;  this->pos_Y += dy;
-	}
+//	void changePosition(float dx, float dy)
+//	{
+//		this->pos_X += dx;  this->pos_Y += dy;
+//	}
 
 	void render();
 	void changeMode(ModeType m);
@@ -103,7 +103,7 @@ void Mario::changeMode(ModeType m)
 		state = STANDING;
 		break;
 
-	case RUN:
+	case RUN:d
 		state = RUNNING1;
 		break;
 

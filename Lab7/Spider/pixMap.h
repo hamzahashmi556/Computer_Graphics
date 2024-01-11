@@ -267,7 +267,7 @@ int RGBApixmap::readBMPFile(string fname, float para)
 
 	errno_t err;
 
-	err = fopen_s(&fp, fname.c_str(), "rb");
+	err = fopen(fname.c_str(), "rb");
 	if (err != 0 || !fp)
 	{
 		printf("Error opening file %s.\n", fname.c_str());

@@ -25,10 +25,11 @@ void myInit(void)
 
 void display(void)
 {
-	glClear(GL_FOG_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  // Clear color and depth buffers
 	m.render();
 	glFlush();
 }
+
 
 void spinner(int t)
 {
